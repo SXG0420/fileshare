@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="fileshare:Web exploded">
+    <output-path>$PROJECT_DIR$/out</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="fileshare/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="fileshare" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="commons-io-1.4" />
+          <element id="library" level="project" name="commons-fileupload-1.2.2" />
+          <element id="library" level="project" name="servlet-api" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
