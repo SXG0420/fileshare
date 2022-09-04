@@ -9,6 +9,7 @@
         <webroots>
           <root url="file://$MODULE_DIR$" relative="/" />
         </webroots>
+        <sourceRoots />
       </configuration>
     </facet>
   </component>
@@ -24,5 +25,7 @@
     <orderEntry type="library" name="servlet-api" level="project" />
     <orderEntry type="library" scope="TEST" name="commons-io-1.4" level="project" />
     <orderEntry type="library" name="commons-fileupload-1.2.2" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-5.0.8-bin" level="project" />
+    <orderEntry type="library" name="fastjson2-2.0.12" level="project" />
   </component>
 </module>

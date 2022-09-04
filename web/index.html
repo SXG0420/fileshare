@@ -4,12 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload</title>
+    <title>Document</title>
 </head>
 <body>
-    <form action="/uploadFile" method="post" enctype="multipart/form-data">
-        <input type="file" name="filepath">
-        <input type="submit" value="上传">
-    </form>
+   file: <input type="file">
+   <input type="button" value="提交">
+   <img src="" alt="" id="qrimg">
+   <script>
+    document.querySelector('[type="button"]').onclick = function(){
+        var formdata = new FormData();
+        var fileinfo = document.querySelector('[type="file"]').files[0];
+        
+        
+        formdata.append('fileinfo', fileinfo);
+        var xhr = new XMLHttpRequest();
+        var xhr = new XMLHttpRequest;
+
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4){
+                if(xhr.status>=200 && xhr.status<300){
+                    qrimg = document.getElementById("qrimg");
+                    qrimg.src = "101.35.84.135/qrcodeimg/"+fileinfo.name;
+                }
+            }
+        }
+        xhr.open("POST", "/uploadFile", true);
+        xhr.send(formdata);
+   }
+   </script>
 </body>
 </html>

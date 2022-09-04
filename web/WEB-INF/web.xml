@@ -12,14 +12,4 @@
         <servlet-name>UploadFileServlet</servlet-name>
         <url-pattern>/uploadFile</url-pattern>
     </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>test</servlet-name>
-        <servlet-class>test</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>test</servlet-name>
-        <url-pattern>/test</url-pattern>
-    </servlet-mapping>
 </web-app>
