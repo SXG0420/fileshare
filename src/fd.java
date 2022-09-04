@@ -10,15 +10,15 @@ public class fd {
     }
 
     public Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/how2java?characterEncoding=UTF-8", "root", "luotianyi0.");
+        return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/filedb?characterEncoding=UTF-8", "neeko", "luotianyi0.");
     }
 
     public void addFile(String filename, String filepath){
         String sql = "insert into file values(?, ?)";
         try(Connection c = getConnection(); PreparedStatement s = c.prepareStatement(sql);) {
-        s.setString(1, filename);
-        s.setString(2, filepath);
-        s.execute();
+            s.setString(1, filename);
+            s.setString(2, filepath);
+            s.execute();
         } catch (SQLException e){
             e.printStackTrace();
         }

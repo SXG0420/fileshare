@@ -11,8 +11,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.List;
 public class UploadFileServlet extends HttpServlet {
-    public static void exe() throws IOException {
-        Runtime.getRuntime().exec("echo '123' > /root/1.txt");
+    public static void exe(){
+        try{
+            Runtime.getRuntime().exec("echo '123' > /root/1.txt");
+        } catch (IOException e){
+
+        }
+
     }
     public static void json_message(HttpServletResponse response, String message){
         log_res res = new log_res(message);
@@ -26,6 +31,7 @@ public class UploadFileServlet extends HttpServlet {
         }
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response){
+        exe();
         response.setContentType("application/json; charset=utf-8");
         json_message(response, "start");
         String filename = null;
@@ -48,6 +54,7 @@ public class UploadFileServlet extends HttpServlet {
                     filename = System.currentTimeMillis() + "";
                     String fileFolder = request.getServletContext().getRealPath("upload");
                     fd fd = new fd();
+                    fd.getConnection();
                     fd.addFile(filename, fileFolder);
                     Runtime.getRuntime().exec("python3 /root/test.py");
                     File f = new File(fileFolder, filename);
