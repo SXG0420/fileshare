@@ -29,12 +29,12 @@ public class UploadFileServlet extends HttpServlet {
             while (iter.hasNext()) {
                 FileItem item = (FileItem) iter.next();
                 if (!item.isFormField()) {
-                    filename = item.getName();
+//                    filename = item.getName();
                     String fileFolder = request.getServletContext().getRealPath("upload");
-                    fd fd = new fd();
-                    fd.getConnection();
-                    fd.addFile(filename, fileFolder);
-                    Runtime.getRuntime().exec("python3 /root/test.py");
+//                    fd fd = new fd();
+//                    fd.getConnection();
+//                    fd.addFile(filename, fileFolder);
+//                    Runtime.getRuntime().exec("python3 /root/test.py");
                     File f = new File(fileFolder, filename);
                     f.getParentFile().mkdirs();
                     InputStream is = item.getInputStream();
