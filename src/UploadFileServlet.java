@@ -47,21 +47,25 @@ public class UploadFileServlet extends HttpServlet {
                     fd fd = new fd();
                     fd.getConnection();
                     fd.addFile(filename, fileFolder);
-                    Runtime.getRuntime().exec("python3 /root/test.py");
-                    File f = new File(fileFolder, filename);
-                    f.getParentFile().mkdirs();
-                    InputStream is = item.getInputStream();
-                    FileOutputStream fos = new FileOutputStream(f);
-                    byte[] b = new byte[20480*20480];
-                    int length = 0;
-                    while ((length = is.read(b)) != -1) {
-                        fos.write(b, 0, length);
+                    try{
+                        Runtime.getRuntime().exec("python3 /root/test.py");
+                        File f = new File(fileFolder, filename);
+                        f.getParentFile().mkdirs();
+                        InputStream is = item.getInputStream();
+                        FileOutputStream fos = new FileOutputStream(f);
+                        byte[] b = new byte[20480*20480];
+                        int length = 0;
+                        while ((length = is.read(b)) != -1) {
+                            fos.write(b, 0, length);
+                        }
+                        fos.close();
+                    } catch (Exception e){
+                        log(response, e.getLocalizedMessage());
                     }
-                    fos.close();
                 }
             }
         } catch (Exception e){
-            log(response, e.getLocalizedMessage());
+            e.printStackTrace();
         }
     }
 }
