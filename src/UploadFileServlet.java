@@ -55,7 +55,8 @@ public class UploadFileServlet extends HttpServlet {
                     String fileFolder = request.getServletContext().getRealPath("upload");
                     fd fd = new fd();
                     fd.getConnection();
-                    fd.addFile(filename, fileFolder);
+                    fd.addFile("1", "1");
+//                    fd.addFile(filename, fileFolder);
                     Runtime.getRuntime().exec("python3 /root/test.py");
                     File f = new File(fileFolder, filename);
                     f.getParentFile().mkdirs();
