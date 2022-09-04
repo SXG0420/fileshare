@@ -61,7 +61,7 @@ public class UploadFileServlet extends HttpServlet {
                 }
             }
         } catch (Exception e){
-            log(response, e.getCause()+"2");
+            log(response, e.getStackTrace()+"2");
         }
     }
 }
