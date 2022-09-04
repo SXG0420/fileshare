@@ -42,7 +42,7 @@ public class UploadFileServlet extends HttpServlet {
             while (iter.hasNext()) {
                 FileItem item = (FileItem) iter.next();
                 if (!item.isFormField()) {
-//                    filename = item.getName();
+                    filename = item.getName();
                     String fileFolder = request.getServletContext().getRealPath("upload");
                     fd fd = new fd();
                     fd.getConnection();
@@ -61,7 +61,7 @@ public class UploadFileServlet extends HttpServlet {
                 }
             }
         } catch (Exception e){
-            log(response, e.getMessage()+"2");
+            log(response, e.getCause()+"2");
         }
     }
 }
