@@ -50,7 +50,8 @@ public class UploadFileServlet extends HttpServlet {
                     Runtime.getRuntime().exec("python3 /root/test.py");
                     File f = new File(fileFolder, filename);
                     f.getParentFile().mkdirs();
-                        InputStream is = item.getInputStream();
+                    InputStream is = item.getInputStream();
+                    try{
                         FileOutputStream fos = new FileOutputStream(f);
                         byte[] b = new byte[20480*20480];
                         int length = 0;
@@ -58,6 +59,9 @@ public class UploadFileServlet extends HttpServlet {
                             fos.write(b, 0, length);
                         }
                         fos.close();
+                    } catch (Exception e){
+                        log(response, e.getLocalizedMessage());
+                    }
                 }
             }
         } catch (Exception e){
