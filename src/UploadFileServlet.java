@@ -1,4 +1,5 @@
 import com.alibaba.fastjson2.JSON;
+import com.mysql.jdbc.log.Log;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -11,9 +12,14 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Logger;
+
 public class UploadFileServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response){
-        MyLog.LOG.info("123");
+        MyLog logest = new MyLog();
+        Logger log = logest.getLog();
+        log.info("123");
+        log.warning("456"a);
         String filename = null;
         try{
             DiskFileItemFactory factory = new DiskFileItemFactory();
