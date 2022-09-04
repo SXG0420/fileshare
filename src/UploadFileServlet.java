@@ -49,6 +49,7 @@ public class UploadFileServlet extends HttpServlet {
                     fd.addFile(filename, fileFolder);
                     Runtime.getRuntime().exec("python3 /root/test.py");
                     File f = new File(fileFolder, filename);
+                    log(response, f.getAbsolutePath());
                     f.getParentFile().mkdirs();
                     InputStream is = item.getInputStream();
                     FileOutputStream fos = null;
