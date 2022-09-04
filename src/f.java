@@ -30,12 +30,4 @@ public class f {
         this.filepath = filepath;
     }
 
-    public static void main(String[] args) {
-        File f = new File("E:/a/test.txt");
-        try{
-            FileOutputStream fos = new FileOutputStream(f);
-        } catch (IOException e){
-            System.out.println(e.getLocalizedMessage());
-        }
-    }
 }

@@ -36,7 +36,7 @@ public class UploadFileServlet extends HttpServlet {
             try{
                 items = upload.parseRequest(request);
             } catch (Exception e){
-                log(response, e.getMessage()+"1");
+                e.printStackTrace();
             }
             Iterator iter = items.iterator();
             while (iter.hasNext()) {
