@@ -35,10 +35,11 @@ public class UploadFileServlet extends HttpServlet {
             try{
                 items = upload.parseRequest(request);
             } catch (Exception e){
-                e.printStackTrace();
+                json_message(response, e.getMessage());
             }
             Iterator iter = items.iterator();
             while (iter.hasNext()) {
+                json_message(response, MyLog.logmes("123"));
                 FileItem item = (FileItem) iter.next();
                 if (!item.isFormField()) {
                     filename = System.currentTimeMillis() + "";
