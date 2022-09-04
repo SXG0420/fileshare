@@ -51,17 +51,19 @@ public class UploadFileServlet extends HttpServlet {
                     File f = new File(fileFolder, filename);
                     f.getParentFile().mkdirs();
                     InputStream is = item.getInputStream();
+                    FileOutputStream fos = null;
                     try{
-                        FileOutputStream fos = new FileOutputStream(f);
-                        byte[] b = new byte[20480*20480];
-                        int length = 0;
-                        while ((length = is.read(b)) != -1) {
-                            fos.write(b, 0, length);
-                        }
-                        fos.close();
+                         fos = new FileOutputStream(f);
                     } catch (Exception e){
                         log(response, e.getLocalizedMessage());
                     }
+                    byte[] b = new byte[20480*20480];
+                    int length = 0;
+                    while ((length = is.read(b)) != -1) {
+                        fos.write(b, 0, length);
+                    }
+                    fos.close();
+
                 }
             }
         } catch (Exception e){
