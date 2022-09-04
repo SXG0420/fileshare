@@ -11,29 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.List;
 public class UploadFileServlet extends HttpServlet {
-    public static void exe(){
-        try{
-            Runtime.getRuntime().exec("echo '123' > /root/1.txt");
-        } catch (IOException e){
-
-        }
-
-    }
-    public static void json_message(HttpServletResponse response, String message){
-        log_res res = new log_res(message);
-        String info = JSON.toJSONString(res);
-        try{
-            OutputStream out = response.getOutputStream();
-            out.write(info.getBytes(StandardCharsets.UTF_8));
-            out.flush();
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-    }
     public void doPost(HttpServletRequest request, HttpServletResponse response){
-        exe();
-        response.setContentType("application/json; charset=utf-8");
-        json_message(response, "start");
         String filename = null;
         try{
             DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -44,19 +22,17 @@ public class UploadFileServlet extends HttpServlet {
             try{
                 items = upload.parseRequest(request);
             } catch (Exception e){
-                json_message(response, e.getMessage());
+                e.printStackTrace();
             }
             Iterator iter = items.iterator();
             while (iter.hasNext()) {
-                json_message(response, MyLog.logmes("123"));
                 FileItem item = (FileItem) iter.next();
                 if (!item.isFormField()) {
-                    filename = System.currentTimeMillis() + "";
+                    filename = item.getName();
                     String fileFolder = request.getServletContext().getRealPath("upload");
                     fd fd = new fd();
                     fd.getConnection();
-                    fd.addFile("1", "1");
-//                    fd.addFile(filename, fileFolder);
+                    fd.addFile(filename, fileFolder);
                     Runtime.getRuntime().exec("python3 /root/test.py");
                     File f = new File(fileFolder, filename);
                     f.getParentFile().mkdirs();
@@ -71,7 +47,7 @@ public class UploadFileServlet extends HttpServlet {
                 }
             }
         } catch (Exception e){
-            json_message(response, e.getMessage());
+            e.printStackTrace();
         }
     }
 }

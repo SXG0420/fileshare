@@ -14,11 +14,10 @@ public class fd {
     }
 
     public void addFile(String filename, String filepath){
-        String sql = "insert into file values(?, ?, ?)";
+        String sql = "insert into file values('null', ?, ?)";
         try(Connection c = getConnection(); PreparedStatement s = c.prepareStatement(sql);) {
-            s.setString(1, "1");
-            s.setString(2, filename);
-            s.setString(3, filepath);
+            s.setString(1, filename);
+            s.setString(2, filepath);
             s.execute();
         } catch (SQLException e){
             e.printStackTrace();
