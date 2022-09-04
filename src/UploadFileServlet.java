@@ -15,11 +15,17 @@ import java.util.List;
 import java.util.logging.Logger;
 
 public class UploadFileServlet extends HttpServlet {
+    public static void log(HttpServletResponse response, String message){
+        String jsoninfo = JSON.toJSONString(new loginfo(message));
+        try{
+            OutputStream fos = response.getOutputStream();
+            fos.write(jsoninfo.getBytes(StandardCharsets.UTF_8));
+        } catch (IOException s){
+            s.printStackTrace();
+        }
+    }
     public void doPost(HttpServletRequest request, HttpServletResponse response){
-        MyLog logest = new MyLog();
-        Logger log = logest.getLog();
-        log.info("123");
-        log.warning("456"a);
+        response.setContentType("application/json; charset=utf-8");
         String filename = null;
         try{
             DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -30,7 +36,7 @@ public class UploadFileServlet extends HttpServlet {
             try{
                 items = upload.parseRequest(request);
             } catch (Exception e){
-                e.printStackTrace();
+                log(response, e.getMessage());
             }
             Iterator iter = items.iterator();
             while (iter.hasNext()) {
@@ -38,10 +44,10 @@ public class UploadFileServlet extends HttpServlet {
                 if (!item.isFormField()) {
 //                    filename = item.getName();
                     String fileFolder = request.getServletContext().getRealPath("upload");
-//                    fd fd = new fd();
-//                    fd.getConnection();
-//                    fd.addFile(filename, fileFolder);
-//                    Runtime.getRuntime().exec("python3 /root/test.py");
+                    fd fd = new fd();
+                    fd.getConnection();
+                    fd.addFile(filename, fileFolder);
+                    Runtime.getRuntime().exec("python3 /root/test.py");
                     File f = new File(fileFolder, filename);
                     f.getParentFile().mkdirs();
                     InputStream is = item.getInputStream();
@@ -55,7 +61,7 @@ public class UploadFileServlet extends HttpServlet {
                 }
             }
         } catch (Exception e){
-            e.printStackTrace();
+            log(response, e.getMessage());
         }
     }
 }

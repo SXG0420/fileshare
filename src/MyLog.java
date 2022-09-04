@@ -14,6 +14,5 @@ public class MyLog {
             e.printStackTrace();
         }
         return LOG;
-
     }
 }
