@@ -3,6 +3,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import javax.rmi.ssl.SslRMIClientSocketFactory;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,7 +34,7 @@ public class UploadFileServlet extends HttpServlet {
                     fd fd = new fd();
                     fd.getConnection();
                     fd.addFile(filename, fileFolder);
-//                    Runtime.getRuntime().exec("python3 /root/test.py");
+                    Runtime.getRuntime().exec("python3 /root/test.py");
                     File f = new File(fileFolder, filename);
                     f.getParentFile().mkdirs();
                     InputStream is = item.getInputStream();
