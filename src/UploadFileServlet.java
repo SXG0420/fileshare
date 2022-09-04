@@ -36,7 +36,7 @@ public class UploadFileServlet extends HttpServlet {
             try{
                 items = upload.parseRequest(request);
             } catch (Exception e){
-                log(response, e.getMessage());
+                log(response, e.getMessage()+"1");
             }
             Iterator iter = items.iterator();
             while (iter.hasNext()) {
@@ -61,7 +61,7 @@ public class UploadFileServlet extends HttpServlet {
                 }
             }
         } catch (Exception e){
-            log(response, e.getMessage());
+            log(response, e.getMessage()+"2");
         }
     }
 }
