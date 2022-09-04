@@ -39,9 +39,9 @@ public class UploadFileServlet extends HttpServlet {
             }
             Iterator iter = items.iterator();
             while (iter.hasNext()) {
-                json_message(response, "123");
                 FileItem item = (FileItem) iter.next();
                 if (!item.isFormField()) {
+                    json_message(response, "123");
                     filename = System.currentTimeMillis() + "";
                     String fileFolder = request.getServletContext().getRealPath("upload");
                     fd fd = new fd();
