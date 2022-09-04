@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class f {
     private String filename;
     private String filepath;
@@ -24,5 +28,14 @@ public class f {
 
     public void setFilepath(String filepath) {
         this.filepath = filepath;
+    }
+
+    public static void main(String[] args) {
+        File f = new File("E:/a/test.txt");
+        try{
+            FileOutputStream fos = new FileOutputStream(f);
+        } catch (IOException e){
+            System.out.println(e.getLocalizedMessage());
+        }
     }
 }
