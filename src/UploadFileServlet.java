@@ -13,6 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 public class UploadFileServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response){
+        MyLog.LOG.info("123");
         String filename = null;
         try{
             DiskFileItemFactory factory = new DiskFileItemFactory();
