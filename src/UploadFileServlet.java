@@ -11,6 +11,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 import java.util.List;
 public class UploadFileServlet extends HttpServlet {
+    public static void exe() throws IOException {
+        Runtime.getRuntime().exec("echo '123' > /root/1.txt");
+    }
     public static void json_message(HttpServletResponse response, String message){
         log_res res = new log_res(message);
         String info = JSON.toJSONString(res);
