@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.logging.*;
 
 public class MyLog {
-    public static void logmes(String message){
+    public static String logmes(String message){
         Logger logger = Logger.getLogger("MyLog");
         FileHandler fh;
         try{
@@ -11,9 +11,8 @@ public class MyLog {
             fh.setFormatter(new SimpleFormatter());
             logger.info(message);
         } catch (IOException e){
-            e.printStackTrace();
+            return e.getMessage();
         }
+        return "mylog_ok";
     }
-
-
 }
